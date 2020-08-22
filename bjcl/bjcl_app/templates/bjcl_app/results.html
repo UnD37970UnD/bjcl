@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'bjcl_app/results.css' %}">
+    <title>Rezultate</title>
+</head>
+<body>
+<header class="header py-3" style="background: rgba(181,226,250,1)">
+    <div class="container">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-6 text-center">
+            <img class="d-block mx-auto mb-4" src="{% static 'bjcl_app/Logo_BJ_Calarasi.png' %}" alt width="36" height="36">
+            <a class="header-logo text-dark" href="https://www.bjcalarasi.ro/">Biblioteca Judeteana Calarasi</a>
+        </div>
+        <div class="row">
+            <h1>Rezultate</h1>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container" style="background: rgba(252,248,249,1)">
+    <div class="row principal">
+    {% for instance in object_list %}
+        <div class="col-md-3 mt-3">
+            <div class="centering">
+                    <svg class="disp_bubble " width="47" height="47" xmlns="http://www.w3.org/2000/svg" >
+                        <ellipse fill=green stroke="rgba(112,112,112,1)" stroke-width="0px" stroke-linejoin="miter" shape-rendering="auto" id="Ellipse_4_" rx="23.5" ry="23.5" cx="23.5" cy="23.5"></ellipse>
+                        <text x="50%" y="65%" class="disp" >{{ instance.book_disponibility}} </text>
+                    </svg>
+                    <img class="img" src= {{ instance.book_image }} class='img'>
+                    <svg class="info" width="182" height="136" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="rgba(41,115,115,1)" stroke="rgba(0,0,0,1)" stroke-width="0px" stroke-linejoin="miter" shape-rendering="auto" id="Rectangle_16_" rx="55" ry="55" x="0" y="0" width="182" height="136"></rect>
+                        <text x="50%" y="65%" class="Book_Title">{{ instance.book_title }}</text>
+                        <text x="50%" y="85%" class="Book_Author">{{ instance.book_author }}</text>
+                    </svg>
+            </div>
+        </div>
+	{% endfor %}
+</div>
+</div>
+<footer id="footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>Copyright &copy; Iustin Ivan</small>
+    </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

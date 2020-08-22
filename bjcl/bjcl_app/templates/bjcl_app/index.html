@@ -1,0 +1,60 @@
+<html>
+
+<html lang="en">
+
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static 'bjcl_app/index.css' %}">
+	<title>Cautare..</title>
+</head>
+<body>
+
+<header class="header py-3" style="background: rgba(181,226,250,1)">
+	<div class="container">
+		<div class="row flex-nowrap justify-content-between align-items-center">
+			<div class="col-6 text-center">
+				<img class="d-block mx-auto mb-4" src="{% static 'bjcl_app/Logo_BJ_Calarasi.png' %}" alt width="36" height="36">
+				<a class="header-logo text-dark" href="https://www.bjcalarasi.ro/">Biblioteca Judeteana Calarasi</a>
+			</div>
+			<div class="row">
+				<h1>Cauta cartea dupa titlu</h1>
+			</div>
+		</div>
+	</div>
+</header>
+
+<form method="post" id="form">
+				{% csrf_token %}
+				{{ form }}
+	<button type="submit" id="search" onClick="toggleImage()"> Search </button>
+</form>
+{% load static %}
+<img src="{% static 'bjcl_app/book_loading.gif' %}" id="image" class="loading" alt="Loading.."  width=600 >
+<script>
+	function toggleImage(){
+		document.querySelector('#image').classList.toggle('hidden');
+		var x = document.getElementById("form");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		}
+		else {
+			x.style.display = "none";
+		}
+	}
+</script>
+
+</div>
+<footer id="footer" class="py-4 bg-dark text-white-50">
+	<div class="container text-center">
+		<small>Copyright &copy; Iustin Ivan</small>
+	</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
